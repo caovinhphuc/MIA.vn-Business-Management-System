@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MIA.vn - Hệ thống Quản lý Kinh doanh Thông minh
 
 <div align="center">

@@ -7,7 +7,7 @@ echo "🚀 Pushing MIA.vn Business Management System to GitHub..."
 
 # Thay đổi URL repository này thành URL repository thực tế của bạn
 # Ví dụ: https://github.com/username/MIA.vn-Business-Management-System.git
-REPO_URL="https://github.com/LauCaKeo/MIA.vn-Business-Management-System.git"
+REPO_URL="https://github.com/caovinhphuc/MIA.vn-Business-Management-System.git"
 
 # Kiểm tra xem remote origin đã được thêm chưa
 if ! git remote get-url origin >/dev/null 2>&1; then
