@@ -6,9 +6,9 @@
 2. **Repository name**: `MIA.vn-Business-Management-System`
 3. **Description**: `Modern Business Management System with React, TypeScript & Enhanced UI/UX`
 4. **Visibility**: Chọn Public hoặc Private
-5. **⚠️ QUAN TRỌNG**: 
+5. **⚠️ QUAN TRỌNG**:
    - ❌ KHÔNG tích "Add a README file"
-   - ❌ KHÔNG tích "Add .gitignore" 
+   - ❌ KHÔNG tích "Add .gitignore"
    - ❌ KHÔNG tích "Choose a license"
 6. **Click**: "Create repository"
 
@@ -80,31 +80,31 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
 ```
 
 ## 📋 Bước 6: Thêm Collaborators (Optional)
