@@ -1,0 +1,282 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-gray-600);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-gray-300);
+    color: var(--color-gray-700);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:active {
+    background: var(--color-gray-100);
+    transform: translateY(0) scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(255, 120, 0, 0.1);
+  }
+}
+
+.menu {
+  position: absolute;
+  z-index: 1000;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 107, 53, 0.15);
+  border-radius: 12px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  padding: var(--space-1);
+  animation: dropdownSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &--bottom-right {
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-1);
+  }
+
+  &--bottom-left {
+    top: 100%;
+    left: 0;
+    margin-top: var(--space-1);
+  }
+
+  &--top-right {
+    bottom: 100%;
+    right: 0;
+    margin-bottom: var(--space-1);
+  }
+
+  &--top-left {
+    bottom: 100%;
+    left: 0;
+    margin-bottom: var(--space-1);
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  background: none;
+  color: var(--color-gray-700);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover:not(.menuItemDisabled) {
+    background: var(--color-gray-50);
+    color: var(--color-gray-900);
+    transform: translateX(2px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active:not(.menuItemDisabled) {
+    background: var(--color-gray-100);
+    transform: translateX(0) scale(0.98);
+  }
+
+  // Báo kiện - Màu xanh lá
+  &[data-action="notify"] {
+    color: #059669;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(5, 150, 105, 0.1);
+      color: #047857;
+    }
+  }
+
+  // In soạn hàng - Màu xanh dương
+  &[data-action="print_packing"] {
+    color: #2563eb;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+    }
+  }
+
+  // In phiếu - Màu cam
+  &[data-action="print_voucher"] {
+    color: var(--color-primary);
+
+    &:hover:not(.menuItemDisabled) {
+      background: var(--color-primary-light);
+      color: var(--color-primary-dark);
+    }
+  }
+
+  // Xuất phiếu - Màu tím
+  &[data-action="export_voucher"] {
+    color: #7c3aed;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(124, 58, 237, 0.1);
+      color: #6d28d9;
+    }
+  }
+
+  // Sửa - Màu vàng cam
+  &[data-action="edit"] {
+    color: #ea580c;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(234, 88, 12, 0.1);
+      color: #c2410c;
+    }
+  }
+
+  // Export - Màu xanh lá đậm
+  &[data-action="export"] {
+    color: #16a34a;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(22, 163, 74, 0.1);
+      color: #15803d;
+    }
+  }
+
+  // Import - Màu xanh dương đậm
+  &[data-action="import"] {
+    color: #1e40af;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(30, 64, 175, 0.1);
+      color: #1e3a8a;
+    }
+  }
+
+  // Thêm phiếu CK - Màu cam đậm
+  &[data-action="create_voucher"] {
+    color: #dc2626;
+
+    &:hover:not(.menuItemDisabled) {
+      background: rgba(220, 38, 38, 0.1);
+      color: #b91c1c;
+    }
+  }
+
+  &.menuItemDanger {
+    color: var(--color-error);
+
+    &:hover:not(.menuItemDisabled) {
+      background: var(--color-error-light);
+      color: var(--color-error);
+    }
+  }
+
+  &.menuItemDisabled {
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+  }
+
+  &.menuItemActive {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-weight: 600;
+
+    &:hover:not(.menuItemDisabled) {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+  }
+}
+
+@keyframes dropdownSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.9);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Mobile responsive
+@include mobile {
+  .menu {
+    min-width: 140px;
+  }
+
+  .menuItem {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-base);
+  }
+}

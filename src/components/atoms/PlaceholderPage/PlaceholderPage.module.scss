@@ -1,0 +1,56 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: var(--space-6);
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.02) 0%,
+    rgba(255, 107, 53, 0.01) 100%
+  );
+  border-radius: var(--border-radius-xl);
+  margin: var(--space-4);
+
+  h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+    text-shadow: 0 2px 4px rgba(255, 107, 53, 0.1);
+
+    @include mobile {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--space-3);
+    }
+  }
+
+  p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-600);
+    max-width: 600px;
+    line-height: 1.6;
+
+    @include mobile {
+      font-size: var(--font-size-base);
+      padding: 0 var(--space-2);
+    }
+  }
+
+  @include mobile {
+    min-height: 50vh;
+    padding: var(--space-4);
+    margin: var(--space-2);
+  }
+
+  @include tablet {
+    min-height: 55vh;
+    padding: var(--space-5);
+    margin: var(--space-3);
+  }
+}

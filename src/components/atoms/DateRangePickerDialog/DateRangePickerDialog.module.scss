@@ -1,0 +1,382 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 2px solid var(--color-primary-light);
+
+  h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-primary-dark);
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-base);
+  color: var(--color-gray-500);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+  }
+}
+
+.content {
+  padding: var(--space-6);
+}
+
+.dateInputs {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.dateInputGroup {
+  flex: 1;
+
+  label {
+    display: block;
+    margin-bottom: var(--space-1);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary-dark);
+  }
+}
+
+.dateInput {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.02) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  svg {
+    color: var(--color-primary);
+  }
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.15);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 53, 0.05) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+}
+
+.mainContent {
+  display: flex;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.quickSelect {
+  background: var(--color-gray-50);
+  border-radius: var(--radius-base);
+  padding: var(--space-2);
+}
+
+.quickOption {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: var(--space-1);
+
+  &:hover {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+  }
+
+  &.active {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+}
+
+.calendar {
+  flex: 1;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.monthCalendar {
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.1);
+}
+
+.monthHeader {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.05) 0%,
+    rgba(255, 107, 53, 0.02) 100%
+  );
+  padding: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  border-bottom: 1px solid var(--color-primary-light);
+}
+
+.monthNavButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-base);
+  color: var(--color-primary-dark);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 53, 0.1) 0%,
+      rgba(255, 107, 53, 0.05) 100%
+    );
+    color: var(--color-primary);
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 4px rgba(255, 107, 53, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+  }
+}
+
+.monthTitle {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-base);
+}
+
+.dayHeaders {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.08) 0%,
+    rgba(255, 107, 53, 0.03) 100%
+  );
+}
+
+.dayHeader {
+  padding: var(--space-2);
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  border-right: 1px solid var(--color-primary-light);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.emptyDay {
+  aspect-ratio: 1;
+  border-right: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
+
+  &:nth-child(7n) {
+    border-right: none;
+  }
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  border-right: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
+  transition: all 0.2s ease;
+
+  &:nth-child(7n) {
+    border-right: none;
+  }
+
+  &:hover {
+    background: var(--color-primary-light);
+    color: var(--color-gray-900);
+  }
+
+  &.inRange {
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--color-primary);
+  }
+
+  &.startDate,
+  &.endDate {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.cancelButton {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-white);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 53, 0.05) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(255, 107, 53, 0.1);
+  }
+}
+
+.applyButton {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-primary-dark);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+  }
+}
+
+@include mobile {
+  .dialog {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .content {
+    padding: var(--space-4);
+  }
+
+  .mainContent {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .calendarGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .dateInputs {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}

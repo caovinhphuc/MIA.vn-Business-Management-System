@@ -1,0 +1,97 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+
+  // Size variants
+  &--sm {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xxxxs);
+    line-height: 1;
+  }
+
+  &--md {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xxxs);
+    line-height: 1.1;
+  }
+
+  &--lg {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xxs);
+    line-height: 1.2;
+  }
+
+  // Color variants
+  &--default {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-200);
+  }
+
+  &--success {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+  }
+
+  &--warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+  }
+
+  &--error {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+  }
+
+  &--info {
+    background-color: var(--color-info-light);
+    color: var(--color-info);
+    border: 1px solid var(--color-info);
+  }
+
+  &--primary {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+}
+
+// Special pill variants for table data
+.badgePill {
+  @extend .badge;
+
+  &--green {
+    background-color: #e6f7ff;
+    color: #1890ff;
+    border: 1px solid #91d5ff;
+  }
+
+  &--blue {
+    background-color: #f6ffed;
+    color: #52c41a;
+    border: 1px solid #b7eb8f;
+  }
+
+  &--orange {
+    background-color: #fff7e6;
+    color: #fa8c16;
+    border: 1px solid #ffd591;
+  }
+
+  &--light-blue {
+    background-color: #f0f5ff;
+    color: #2f54eb;
+    border: 1px solid #adc6ff;
+  }
+}

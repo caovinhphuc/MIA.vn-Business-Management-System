@@ -1,0 +1,95 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  padding: var(--space-1) 0;
+}
+
+.filterField {
+  flex-shrink: 0;
+  min-width: 85px;
+
+  @include mobile {
+    min-width: 70px;
+  }
+}
+
+.filterControl {
+  height: 32px;
+  padding: 0 12px;
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-xxs);
+  color: var(--color-primary);
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  gap: 4px;
+
+  &:hover {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+  }
+
+  &:focus {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+  }
+
+  @include mobile {
+    height: 28px;
+    font-size: var(--font-size-xxxxs);
+    padding: 0 8px;
+    gap: 3px;
+  }
+}
+
+.filterLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filterIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.filterControl:hover .filterIcon {
+  color: var(--color-primary-dark);
+  transform: scale(1.1);
+}
+
+// Responsive adjustments
+@include mobile {
+  .filterBar {
+    gap: var(--space-1);
+    padding: var(--space-1) 0;
+  }
+
+  .searchInputContainer {
+    min-width: 100px;
+  }
+}
+
+.shippingStatusField {
+  flex-shrink: 0;
+  min-width: 85px;
+
+  @include mobile {
+    min-width: 70px;
+  }
+}

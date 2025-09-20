@@ -1,0 +1,389 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+
+.voucherCKPage {
+  padding: var(--space-6);
+  background-color: var(--color-gray-50);
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include tablet {
+    padding: var(--space-4);
+    max-width: 100%;
+  }
+
+  @include mobile {
+    padding: var(--space-3);
+    max-width: 100%;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 var(--space-6) 0;
+  background: var(--color-white);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  gap: var(--space-4);
+
+  @include mobile {
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+}
+
+.filterSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 10px;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2);
+  }
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) 12px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 32px;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(255, 107, 53, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  span {
+    font-family: var(--font-family-base);
+  }
+
+  @include mobile {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-xxs);
+    height: 28px;
+  }
+}
+
+.tableSection {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+// Checkbox styling
+.checkbox {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #2563eb;
+  border-radius: 2px;
+
+  &:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 1px;
+  }
+}
+
+// Time display styling
+.timeDisplay {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.dateText {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: var(--font-size-xxs); // 10px
+  line-height: 1.1;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeText {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: var(--font-size-xxxxs); // 8px
+  line-height: 1;
+  color: var(--color-gray-600);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Voucher info styling
+.voucherInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.voucherIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconText {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--font-size-xxs);
+}
+
+.voucherDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.voucherCode {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: var(--font-size-xxs);
+  line-height: 1.1;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voucherId {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: var(--font-size-xxxxs);
+  line-height: 1;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+// Warehouse info styling
+.warehouseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.warehouseCode {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: var(--font-size-xxs);
+  line-height: 1.1;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warehouseName {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: var(--font-size-xxxxs);
+  line-height: 1;
+  color: var(--color-gray-600);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warehouseLocation {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: var(--font-size-xxxxs);
+  line-height: 1;
+  color: var(--color-gray-500);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Badge customizations
+.productBadge {
+  background-color: #e6f7ff !important;
+  color: #1890ff !important;
+  border-color: #91d5ff !important;
+}
+
+.packageBadge {
+  background-color: #f6ffed !important;
+  color: #52c41a !important;
+  border-color: #b7eb8f !important;
+}
+
+.volumeBadge {
+  background-color: #f0f5ff !important;
+  color: #2f54eb !important;
+  border-color: #adc6ff !important;
+}
+
+// Status badge customizations
+.statusExport {
+  background-color: #fff7e6 !important;
+  color: #d46b08 !important;
+  border-color: #ffd591 !important;
+  font-weight: 600 !important;
+}
+
+.statusRequest {
+  background-color: #e6f7ff !important;
+  color: #0958d9 !important;
+  border-color: #91d5ff !important;
+  font-weight: 600 !important;
+}
+
+// Shipping status badge customizations
+.shippingInTransfer {
+  background-color: #f6ffed !important;
+  color: #389e0d !important;
+  border-color: #b7eb8f !important;
+  font-weight: 600 !important;
+}
+
+.shippingWaiting {
+  background-color: #fff7e6 !important;
+  color: #d46b08 !important;
+  border-color: #ffd591 !important;
+  font-weight: 600 !important;
+}
+
+.shippingWaitingNotification {
+  background-color: #fff2f0 !important;
+  color: #cf1322 !important;
+  border-color: #ffccc7 !important;
+  font-weight: 600 !important;
+}
+
+// Actions styling
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Responsive adjustments
+@include mobile {
+  .voucherInfo {
+    gap: var(--space-2);
+  }
+
+  .voucherIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .iconText {
+    font-size: var(--font-size-xs);
+  }
+
+  .voucherCode {
+    font-size: var(--font-size-xs);
+  }
+
+  .voucherId {
+    font-size: 10px;
+  }
+
+  .warehouseCode {
+    font-size: var(--font-size-xs);
+  }
+
+  .warehouseName,
+  .warehouseLocation {
+    font-size: 10px;
+  }
+}
+
+// StatCards section
+.statCardsSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-4) 0 var(--space-6) 0;
+  padding: 0 var(--space-2);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+    padding: 0 var(--space-4);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    padding: 0 var(--space-2);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    padding: 0 var(--space-1);
+    margin: var(--space-2) 0 var(--space-4) 0;
+  }
+}

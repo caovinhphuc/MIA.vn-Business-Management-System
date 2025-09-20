@@ -1,0 +1,179 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+
+.productsPage {
+  padding: var(--space-6);
+  background-color: var(--color-gray-50);
+  min-height: 100vh;
+
+  @include mobile {
+    padding: var(--space-4);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  background: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-base);
+
+  @include mobile {
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+}
+
+.titleSection {
+  h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    margin: 0;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+
+  @include mobile {
+    width: 100%;
+    justify-content: stretch;
+
+    button {
+      flex: 1;
+    }
+  }
+}
+
+.tableSection {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-base);
+  overflow: hidden;
+}
+
+// Table row styles
+.tableRow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-primary-light) !important;
+  }
+}
+
+// Product info styles
+.productInfo {
+  .productName {
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-1);
+  }
+
+  .productId {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+  }
+}
+
+// Price styles
+.price {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+
+// Stock styles
+.stock {
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-base);
+  background-color: var(--color-success);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+
+  &.outOfStock {
+    background-color: var(--color-error);
+  }
+}
+
+// Status styles
+.status {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.statusActive {
+    background-color: var(--color-success);
+    color: var(--color-white);
+  }
+
+  &.statusInactive {
+    background-color: var(--color-warning);
+    color: var(--color-white);
+  }
+
+  &.statusOutOfStock {
+    background-color: var(--color-error);
+    color: var(--color-white);
+  }
+}
+
+// Date info styles
+.dateInfo {
+  text-align: center;
+
+  .date {
+    font-weight: 600;
+    color: var(--color-gray-900);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
+  }
+
+  .time {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+    font-family: monospace;
+    margin-bottom: var(--space-1);
+  }
+
+  .relativeTime {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-400);
+    font-style: italic;
+
+    &.today {
+      color: var(--color-success);
+      font-weight: 600;
+    }
+
+    &.yesterday {
+      color: var(--color-warning);
+      font-weight: 500;
+    }
+  }
+}
+
+// Actions styles
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

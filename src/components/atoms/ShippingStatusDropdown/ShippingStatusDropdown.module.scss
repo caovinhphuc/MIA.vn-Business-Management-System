@@ -1,0 +1,174 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.shippingStatusDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.triggerButton {
+  height: 32px;
+  padding: 0 12px;
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-xxs);
+  color: var(--color-primary);
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  gap: 4px;
+  min-width: 85px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: var(--font-family-base);
+
+  &:hover {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+  }
+
+  &:focus {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+  }
+
+  @include mobile {
+    height: 28px;
+    font-size: var(--font-size-xxxxs);
+    padding: 0 8px;
+    gap: 3px;
+    min-width: 70px;
+  }
+}
+
+.buttonText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
+}
+
+.truckIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.triggerButton:hover .truckIcon {
+  color: var(--color-primary-dark);
+  transform: scale(1.1);
+}
+
+.triggerButton:focus .truckIcon {
+  color: var(--color-primary-dark);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-base);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  margin-top: 4px;
+  min-width: 200px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.optionList {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-1) 0;
+}
+
+.optionItem {
+  margin: 0;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: var(--space-2);
+  border-radius: var(--radius-base);
+
+  &:hover {
+    background-color: rgba(255, 107, 53, 0.05);
+  }
+}
+
+.checkbox {
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+}
+
+.optionText {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 12px;
+  border-radius: var(--radius-base);
+  border: 1px solid;
+  text-align: center;
+  min-width: 130px;
+  flex-shrink: 0;
+}
+
+// Status-specific styles matching table badges
+.optionText.statusAll {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-color: #dee2e6;
+}
+
+.optionText.statusWaitingPackage {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.optionText.statusWaitingTransfer {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeaa7;
+}
+
+.optionText.statusInTransfer {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+// Responsive adjustments
+@include mobile {
+  .dropdownMenu {
+    min-width: 180px;
+  }
+
+  .optionLabel {
+    padding: var(--space-1);
+    gap: var(--space-1);
+  }
+
+  .optionText {
+    font-size: var(--font-size-xxs);
+    padding: 3px 8px;
+    min-width: 110px;
+  }
+}
